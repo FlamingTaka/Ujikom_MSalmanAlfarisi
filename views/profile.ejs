@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri Foto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <%- include('./partials/navbar.ejs')  %>    
+    <%- include('./partials/tombol.ejs')  %>  
+
+    <% if (data.length === 0) { %>
+    <div class="flex flex-col items-center justify-center py-32">
+        <div class="text-center mb-8">
+            <p class="text-2xl font-semibold text-gray-800">Belum ada foto, ingin menambahkan?</p>
+        </div>
+    <div class="grid grid-cols-1 gap-4">
+            <a href="/upload" class="flex items-center gap-5 py-5 px-4 transition duration-300 ease-in-out border rounded-md bg-green-500 shadow-md hover:bg-gray-100">
+                <?xml version="1.0" encoding="UTF-8"?><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M6 12H12M18 12H12M12 12V6M12 12V18" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              <span class="text-lg font-medium text-gray-800">Upload Photo</span>
+            </a>
+        <div> 
+    <% } else  %>
+<% data.forEach(foto => { %>
+   
+    <div class="relative my-3">
+        
+        <h2 class="mb-4 space-x-1 text-sm font-medium text-red-800">Uploaded by <%= foto.userID.username %></h2>
+        <h2 class="mb-4 space-x-1 text-2xl font-medium text-gray-800"><%= foto.judulFoto %></h2>
+            <p class="mb-4 space-x-1 text-sm font-medium text-gray-800"><%= foto.deskripsiFoto %></p>
+        <a href="/foto/<%= foto._id %>" class="block relative group">
+            <img src="/imgUpload/<%= foto.lokasiFile %>" alt="<%= foto.judulfoto %>" class="object-cover w-full h-full transition duration-300 ease-in-out transform group-hover:opacity-80 hover:scale-105" />
+            
+            <div class="absolute inset-0 p-4 bg-black bg-opacity-70 transition duration-300 ease-in-out opacity-0 group-hover:opacity-100 text-white flex flex-col justify-end">
+               
+                <p><%= foto.deskripsi %></p>
+            </div>
+        </a>
+    </div>
+
+
+        
+    
+        <!-- <h3 class="date"> <%= foto.tanggalUnggah.toDateString() %> </h3> -->
+        <div class="px-6 py-4">
+            <form class="fde" id="editDeleteForm" method="POST">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-2 rounded"
+                    type="button" onclick="editPhoto('<%= foto._id %>')">Edit</button>
+                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                    type="button" onclick="deletePhoto('<%= foto._id %>')">Hapus</button>
+            </form>
+        </div>
+    </div>
+   
+    <% }) %>
+    </div>
+
+    <script>
+        function editPhoto(photoId) {
+            window.location.href = '/edit/' + photoId;
+        }
+
+        function deletePhoto(photoId) {
+            if (confirm('Apakah Anda yakin ingin menghapus foto ini?')) {
+                // Lakukan aksi hapus
+                fetch('/delete/' + photoId + '?_method=DELETE', {
+                    method: 'POST'
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Redirect atau lakukan aksi lain setelah penghapusan berhasil
+                        window.location.reload(); // Contoh: reload halaman setelah penghapusan berhasil
+                    } else {
+                        // Handle kesalahan
+                        console.error('Gagal menghapus foto');
+                    }
+                })
+                .catch(error => {
+                    console.error('Terjadi kesalahan:', error);
+                });
+            }
+        }
+    </script>
+
+</body>
+
+</html>

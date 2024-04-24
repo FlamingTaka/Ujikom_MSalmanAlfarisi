@@ -1,0 +1,159 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.guest {
+  font-size: small;
+  padding-top: 20px;
+}
+
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  max-width: 100%;
+  margin-top: 20px; 
+}
+
+.input-group,
+.input-ipk {
+  margin-bottom: 20px; /* Adjust the margin-bottom as needed */
+}
+
+label {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button,
+.btn {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 20px;
+  margin-left: auto; /* Align to the right */
+  margin-right: auto; /* Align to the left */
+}
+
+button:hover,
+.btn:hover {
+  background-color: #2980b9;
+}
+
+.akun {
+  margin-top: 20px;
+  font-size: small;
+}
+
+/* Tambahkan font family dan ubah warna judul */
+h2 {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #333; /* Ubah warna latar belakang navbar */
+  padding: 15px 0; /* Tambahkan padding di atas dan bawah navbar */
+  text-align: left; /* Pusatkan teks di navbar */
+}
+
+.navbar ul {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  display: inline-block; /* Ubah tampilan elemen list menjadi inline-block */
+  margin-right: 20px; /* Tambahkan margin kanan untuk memberi jarak antar elemen */
+}
+
+.navbar li:last-child {
+  margin-right: 0; /* Hapus margin kanan pada elemen terakhir agar tidak ada ruang tambahan */
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #fff; /* Ubah warna teks menjadi putih */
+  padding: 10px 20px; /* Tambahkan padding di dalam elemen list */
+}
+
+.navbar a:hover {
+  background-color: #555; /* Ubah warna latar belakang saat hover */
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: cursive;
+  box-sizing: border-box;
+}
+
+
+.foto-list {
+  width: 100%;
+  height: auto;
+  display: flex;
+}
+
+.foto-item {
+  width: 1000px;
+  height: auto;
+  font-size: 25px;
+}
+
+.post-foto {
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+}
+
+.post-foto li {
+  display: grid;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.gambar {
+  position: static;
+  display: grid;
+  width: 30%;
+}

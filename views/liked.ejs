@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri Foto</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="index.js"></script>
+    <script src="app.js"></script>
+</head>
+
+    <nav class="navbar">
+        <ul>
+            <li>
+                <h2>Foto</h2>
+            </li>
+            <li>
+                <a href="/home">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="/logout">
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="add-foto">
+            <a href="/add-foto" class="tambah">+ Add New</a>
+        </div>
+
+
+            <% likefotos.forEach(foto => { %>
+                <div class="foto-list">
+                    <div class="foto-item">
+                        <h3 class="title"><%= foto.judulFoto %></h3>
+                        <p><%= foto.deskripsiFoto %></p>
+                        <a href="/foto/<%= foto._id %>" class="foto-link"><img src="/imgUpload/<%= foto.lokasiFile %>"
+                                alt="<%= foto.judulFoto %>" class="gambar"></a>
+                        <form class="fde" id="editDeleteForm" method="POST">
+                            <button class="edit" type="button" onclick="editPhoto('<%= foto._id %>')">Edit</button>
+                            <button class="hapus" type="button" onclick="deletePhoto('<%= foto._id %>')">Hapus</button>
+                        </form>
+                        
+                        <script>
+                            function editPhoto(photoId) {
+                                window.location.href = '/edit-post/' + photoId;
+                            }
+                        
+                            function deletePhoto(photoId) {
+                                if (confirm('Apakah Anda yakin ingin menghapus foto ini?')) {
+                                    // Lakukan aksi hapus
+                                    fetch('/delete-post/' + photoId + '?_method=DELETE', {
+                                        method: 'POST'
+                                    })
+                                    .then(response => {
+                                        if (response.ok) {
+                                            // Redirect atau lakukan aksi lain setelah penghapusan berhasil
+                                            window.location.reload(); // Contoh: reload halaman setelah penghapusan berhasil
+                                        } else {
+                                            // Handle kesalahan
+                                            console.error('Gagal menghapus foto');
+                                        }
+                                    })
+                                    .catch(error => {
+                                        console.error('Terjadi kesalahan:', error);
+                                    });
+                                }
+                            }
+                        </script>
+                        
+                    </div>
+                </div>
+            <% }) %>
+    </div>
+
+</html>

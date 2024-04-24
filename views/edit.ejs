@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri Foto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="foto-title text-center">
+        <%- include('./partials/navbar.ejs') %>
+    </div>
+    <form action="/edit/<%= data._id %>?_method=PUT"  method="POST">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto pt-20 ml-5">
+            <div class="mt-5 mb-8">
+                <label for="judulFoto" class="block text-gray-700 text-sm font-bold mb-2">Judul</label>
+                <input type="text" value="<%= data.judulFoto %>" name="judulFoto" id="judulFoto" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                
+                <label for="deskripsiFoto" class="block text-gray-700 text-sm font-bold mb-2 mt-4">Deskripsi</label>
+                <input type="text" value="<%= data.deskripsiFoto %>" name="deskripsiFoto" id="deskripsiFoto" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+
+        <div class="text-center justify-center pt-10">
+            <input type="submit" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        </div>
+    </form>
+</body>
+</html>
+
+<!-- 
+<form action="/edit-post/<%= data._id %>?_method=PUT" method="POST"> -->
+    <!-- <form action="/edit-post/<%= data._id %>?_method=PUT" method="POST">
+    <label for="judulFoto" class="block text-gray-700 text-sm font-bold mb-2">Judul</label>
+                <input type="text" placeholder="<%= data.judulFoto %>" name="judulFoto" id="judulFoto" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                
+                <label for="deskripsiFoto" class="block text-gray-700 text-sm font-bold mb-2 mt-4">Deskripsi</label>
+                <input type="text" placeholder= "<%= data.deskripsiFoto %>" name="deskripsiFoto" id="deskripsiFoto" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+    <input type="submit" value="Update" class="btn"> -->
+
