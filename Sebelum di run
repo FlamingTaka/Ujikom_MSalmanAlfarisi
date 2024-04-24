@@ -1,0 +1,3 @@
+Sebelum mulai, install dulu nodejs
+
+jika terjadi error, maka install module yang diperlukan menggunakan npm install, diantaranya bcrypt body-parser connect-mongo cookie-parser dotenv ejs express gridfs-stream jsonwebtoken method-override mongoose multer nodemon
